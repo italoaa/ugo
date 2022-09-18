@@ -1,4 +1,4 @@
-baseURL = 'https://italoamaya.me/'
+baseURL = '//italoamaya.me/'
 languageCode = 'en-us'
 title = 'Italo Amaya'
 # theme = "hugoCoder"
