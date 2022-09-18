@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Creating this site - Italo Amaya</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="This is the complete process I went through to create this website incuding links and resources." />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="Creating this site" />
+<meta property="og:description" content="This is the complete process I went through to create this website incuding links and resources." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://italoamaya.me/posts/creating_this_site/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-14T00:00:00-05:00" />
+<meta property="article:modified_time" content="2022-06-14T00:00:00-05:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Creating this site"/>
+<meta name="twitter:description" content="This is the complete process I went through to create this website incuding links and resources."/>
+<script src="http://italoamaya.me/js/feather.min.js"></script>
+	
+	
+        <link href="http://italoamaya.me/css/fonts.b685ac6f654695232de7b82a9143a46f9e049c8e3af3a21d9737b01f4be211d1.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="http://italoamaya.me/css/main.d1574b43a51792a446cd761d6f9b1c9abb39ed2c36ca6984f74aef729eb9f245.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://italoamaya.me/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"   />
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="http://italoamaya.me/">Italo Amaya</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/about">About Me</a>
+		
+		<a href="/posts">Blog</a>
+		
+		<a href="/recipes">Recipes</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Creating this site</h1>
+			<div class="meta">Posted on Jun 14, 2022</div>
+		</div>
+		
+
+		<section class="body">
+			<h2 id="disclaimer">Disclaimer</h2>
+<p>Most of the information here is taken from the tutorial in <code>Land Chad</code> check them out!</p>
+<h2 id="introduction-and-process-dot">Introduction and process.</h2>
+<p>This is the process I went through while making this same website. At first I tried to make a basic <code>html</code> and css website but my design skills where not enough. I also considered using <code>Hugo</code> because I use <code>org mode</code> almost daily and there is a package called <a href="https://ox-hugo.scripter.co/">ox-hugo</a>, which makes transformation of the <code>org-mode</code> syntax into the <code>markdown</code> for <code>hugo</code> simple. On previous attempts I failed at organizing a easy to manage stream for the server. Most was tedious and repetitive function calling. For this attempt I first set up ssh-keys which turned out to be amazing and really convenient. Then I set up <code>hugo</code> locally. I found a nice and minimal theme, and then proceded to spend many hours trying to understand hugo. The problem was that I expected hugo to be simple, which it is. But it is like an onion that has many layers that I had to peel of, and with each layer more complexity came by. I understood how <code>content organization</code> works and how <code>ox-hugo</code> handles this. I had a nice website plus a easy way to make webpages from the comfort of <code>org-mode</code>. To end this process I had to connect the server and this local <code>hugo</code> site, and to do this I used <a href="https://github.com/cjohansson/emacs-ssh-deploy">ssh-deploy</a> which was hard to set up but in the end it worked. Now the process is I write the org mode file, export, run ssh-deploy, ssh-deploy automatic script executes in the server which creates the html content.</p>
+<h2 id="steps">Steps</h2>
+<h3 id="renting-a-server">Renting a server</h3>
+<p>This step involves renting a server from any type of hosting provider. I went with vultur as their plans are cheap and straight forward. But this step can be done on <code>ANY</code> hosting provider.</p>
+<h3 id="getting-a-domain">Getting a domain</h3>
+<p>Now that you have a server its time to get a domain name. Again anywhere is fine just get one. Also you may want to skip this step until your server is running like you want it to avoid over paying for a long term project.</p>
+<h3 id="setting-up-the-server">Setting up the server</h3>
+<p>This step is different for everyone. Sometime in the future I will include a link to a blog post on how to do this step by step, but for now this is the overview of how I set up a new server.</p>
+<h4 id="create-a-new-user">Create a new user</h4>
+<p>This will create a new user that has root privileges. <code>This is done in debian</code>.</p>
+<blockquote>
+<p>You have to be root to do this</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>adduser &lt;username&gt;              <span style="color:#75715e"># create user</span>
+</span></span><span style="display:flex;"><span>usermod -aG sudo &lt;username&gt;     <span style="color:#75715e"># Add user to sudo group</span>
+</span></span><span style="display:flex;"><span>getent group sudo               <span style="color:#75715e"># verify that the user is in sudo group</span>
+</span></span></code></pre></div><h4 id="setting-up-ssh--setting-up-shh-dot-md"><a href="/posts/setting_up_shh/">Setting_up_ssh</a></h4>
+<h4 id="setting-up-nginx--dot-setting-up-nginx-dot-md"><a href="/posts/setting_up_nginx/">Setting_up_nginx</a></h4>
+<h4 id="ssl-for-nginx--setting-up-ssl-nginx-dot-md"><a href="/posts/setting_up_ssl__nginx/">SSL for nginx</a></h4>
+<h3 id="hugo-set-up--dot-setting-up-hugo-dot-md"><a href="/posts/setting_up_hugo/">Hugo Set up</a></h3>
+<h2 id="resources">Resources</h2>
+<h3 id="for-setting-up-a-server-with-nginx-and-https">For setting up a server with <code>nginx</code> and <code>https</code>:</h3>
+<ul>
+<li><a href="https://landchad.net/">Landchad</a></li>
+<li><a href="https://www.nginx.com/">nginx</a></li>
+</ul>
+<h3 id="for-org-mode-to-hugo-export">For org-mode to hugo export:</h3>
+<ul>
+<li><a href="https://ox-hugo.scripter.co/">ox-hugo</a></li>
+</ul>
+<h3 id="hugo">Hugo:</h3>
+<ul>
+<li><a href="https://gohugo.io/">Hugo</a></li>
+</ul>
+<h3 id="theme-for-hugo">Theme for hugo:</h3>
+<ul>
+<li><a href="https://themes.gohugo.io/themes/hugo-coder/">Coder Theme</a></li>
+</ul>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/athul/archie" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2022  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

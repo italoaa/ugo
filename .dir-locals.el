@@ -1,0 +1,5 @@
+((nil . ((ssh-deploy-root-local . "/Users/italo/Personal/Dropbox/Bak/Org/Hugo/")
+	 (ssh-deploy-root-remote . "/ssh:root@italoamaya.me:/home/ito/Hugo")
+	 (ssh-deploy-on-explicit-save . 0)
+	 (ssh-deploy-verbose . 1)
+         (ssh-deploy-script . (lambda() (let ((default-directory ssh-deploy-root-remote)) (shell-command "sudo hugo")))))))

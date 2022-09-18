@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Setting_up_shh - Italo Amaya</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="How to properly set up SSH on a vps" />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="Setting_up_shh" />
+<meta property="og:description" content="How to properly set up SSH on a vps" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://italoamaya.me/posts/setting_up_shh/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-25T00:00:00-05:00" />
+<meta property="article:modified_time" content="2022-07-25T00:00:00-05:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Setting_up_shh"/>
+<meta name="twitter:description" content="How to properly set up SSH on a vps"/>
+<script src="http://italoamaya.me/js/feather.min.js"></script>
+	
+	
+        <link href="http://italoamaya.me/css/fonts.b685ac6f654695232de7b82a9143a46f9e049c8e3af3a21d9737b01f4be211d1.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="http://italoamaya.me/css/main.d1574b43a51792a446cd761d6f9b1c9abb39ed2c36ca6984f74aef729eb9f245.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://italoamaya.me/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"   />
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="http://italoamaya.me/">Italo Amaya</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/about">About Me</a>
+		
+		<a href="/posts">Blog</a>
+		
+		<a href="/recipes">Recipes</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Setting_up_shh</h1>
+			<div class="meta">Posted on Jul 25, 2022</div>
+		</div>
+		
+
+		<section class="body">
+			<h2 id="what-is-ssh">What is SSH</h2>
+<p>This is the main protocol for communicating with your server so make sure is properly set up. For me the most important aspect to add is <code>SSH-keys</code>. This are like files in your system that are used to authenticate with the server. This is used instead of a password.</p>
+<h2 id="how-to-configure-ssh">How to configure SSH</h2>
+<h3 id="config-file">Config File</h3>
+<p>The following config are some of my definitive.</p>
+<p>This is in <code>/etc/ssh/sshd_config</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>PermitEmptyPasswords no    <span style="color:#75715e"># Disable empty passwords</span>
+</span></span><span style="display:flex;"><span>PermitRootLogin no         <span style="color:#75715e"># Disable login for root</span>
+</span></span><span style="display:flex;"><span>PasswordAuthentication no  <span style="color:#75715e"># Disable password and only allow SSH-keys</span>
+</span></span></code></pre></div><h3 id="register-ssh-key">Register ssh-key</h3>
+<p>Once you have your key then copy the contents of the <code>.pub</code> file. After copying the contents create a file in the (user you want to login into as) on <code>~/.ssh/authorized_keys</code>. Then append the copied content to this file.</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/athul/archie" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2022  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

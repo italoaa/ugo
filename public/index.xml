@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Italo Amaya</title>
+    <link>http://italoamaya.me/</link>
+    <description>Recent content on Italo Amaya</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Jul 2022 00:00:00 -0500</lastBuildDate><atom:link href="http://italoamaya.me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting_up_nginx</title>
+      <link>http://italoamaya.me/posts/setting_up_nginx/</link>
+      <pubDate>Mon, 25 Jul 2022 00:00:00 -0500</pubDate>
+      
+      <guid>http://italoamaya.me/posts/setting_up_nginx/</guid>
+      <description>Nginx Install This is the web server that will handle all http/s connections.
+sudo apt install nginx Config Add a config to nginx config. This config is taken from Land Chad except from the root key which points to the Hugo site.
+server { listen 80 ; listen [::]:80 ; server_name &amp;lt;domain&amp;gt; ; root /home/&amp;lt;username&amp;gt;/&amp;lt;site-name&amp;gt;/public; index index.html index.htm index.nginx-debian.html ; location / { try_files $uri $uri/ =404 ; } } Just replace the &amp;lt;&amp;gt; with your stuff.</description>
+    </item>
+    
+    <item>
+      <title>Setting_up_shh</title>
+      <link>http://italoamaya.me/posts/setting_up_shh/</link>
+      <pubDate>Mon, 25 Jul 2022 00:00:00 -0500</pubDate>
+      
+      <guid>http://italoamaya.me/posts/setting_up_shh/</guid>
+      <description>What is SSH This is the main protocol for communicating with your server so make sure is properly set up. For me the most important aspect to add is SSH-keys. This are like files in your system that are used to authenticate with the server. This is used instead of a password.
+How to configure SSH Config File The following config are some of my definitive.
+This is in /etc/ssh/sshd_config</description>
+    </item>
+    
+    <item>
+      <title>Setting_up_ssl__nginx</title>
+      <link>http://italoamaya.me/posts/setting_up_ssl__nginx/</link>
+      <pubDate>Mon, 25 Jul 2022 00:00:00 -0500</pubDate>
+      
+      <guid>http://italoamaya.me/posts/setting_up_ssl__nginx/</guid>
+      <description>What is ssl? This step enables the visitor to come to the website on a secure connection.
+Install certbot apt install python3-certbot-nginx Run the cerbot installation It will ask for which domain to enable the https. Domain is required Go throug the installation and check for the https in your browser
+certbot --nginx Automatic certificate renewal crontab -e and add this to the end
+0 0 1 * * certbot --nginx renew </description>
+    </item>
+    
+    <item>
+      <title>Sweet_potato_dessert</title>
+      <link>http://italoamaya.me/recipes/sweet_potato_dessert/</link>
+      <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://italoamaya.me/recipes/sweet_potato_dessert/</guid>
+      <description>Ingredients Sweet potato mandarins Instructions Chop the sweet potato into slices as thick as your finger. Slice the mandarin. Add the sweet potato to a container for the oven. Squeeze the mandarin into the sweet potato. Start the oven in high heat and once the oven is hot lower it down. If they look dry squeeze more juice. Bonus You can also add aluminum foil on top once the sweet potato is crisp.</description>
+    </item>
+    
+    <item>
+      <title>Starting with reverse engineering</title>
+      <link>http://italoamaya.me/posts/starting_with_reverse_engineering/</link>
+      <pubDate>Mon, 04 Jul 2022 00:00:00 -0500</pubDate>
+      
+      <guid>http://italoamaya.me/posts/starting_with_reverse_engineering/</guid>
+      <description>What tools I use I started out with ghidra and found that rather slow and slugish. I am a big emacs and vim user so efficiency is a must. Luckily I knew about radare2. Radare2 is a command line tool to disassemble and reverse binaries plus much much more. I found that radare was easier to use for small binaries like the ones from crackmes.
+Resources In my opinion LiveOverflow playlist on binary exploitation is amazing and as a bigginer is a great place.</description>
+    </item>
+    
+    <item>
+      <title>Teriyaki Sauce</title>
+      <link>http://italoamaya.me/recipes/teriyaki_sauce/</link>
+      <pubDate>Tue, 21 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://italoamaya.me/recipes/teriyaki_sauce/</guid>
+      <description>Ingredients Soy sauce Mirin sauce Sake Sugar Instructions Add equal parts of Soy sauce, Mirin and Sake. Stir and then add half part sugar. Extras You can also add garlic and onions by grating them in any cheese grater. These add a bit of a kick to the sauce.</description>
+    </item>
+    
+    <item>
+      <title>Creating this site</title>
+      <link>http://italoamaya.me/posts/creating_this_site/</link>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 -0500</pubDate>
+      
+      <guid>http://italoamaya.me/posts/creating_this_site/</guid>
+      <description>Disclaimer Most of the information here is taken from the tutorial in Land Chad check them out!
+Introduction and process. This is the process I went through while making this same website. At first I tried to make a basic html and css website but my design skills where not enough. I also considered using Hugo because I use org mode almost daily and there is a package called ox-hugo, which makes transformation of the org-mode syntax into the markdown for hugo simple.</description>
+    </item>
+    
+    <item>
+      <title>Setting_up_hugo</title>
+      <link>http://italoamaya.me/posts/setting_up_hugo/</link>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 -0500</pubDate>
+      
+      <guid>http://italoamaya.me/posts/setting_up_hugo/</guid>
+      <description>Hugo Now that I have a server I started to play around with the site generation of hugo. It can be a bit complicated If you are using emacs and org mode like me so I will divide this explanation in to three parts: Ox-Hugo (You can skip this if you are using only md), Content Organization and Configurations.
+Set up hugo Download hugo You are going to want to install hugo in your personal machine apart from your server.</description>
+    </item>
+    
+    <item>
+      <title>Cup Brownie</title>
+      <link>http://italoamaya.me/recipes/cup_brownie/</link>
+      <pubDate>Mon, 13 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://italoamaya.me/recipes/cup_brownie/</guid>
+      <description>Ingredients 1 and 1/2 tbsp butter 30g cocoa 2 tbsp sugar 2 tbsp milk 4 tbsp all purpose flour 1/4 tsp baking powder pinch salt Instructions add butter to cup and place into microwave until its melted tilt the cup to get the sides of the cup with butter add the flour, cocoa, sugar and baking powder. mix and then add the milk place in the microwave again checking constantly </description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>http://italoamaya.me/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://italoamaya.me/about/</guid>
+      <description>Current Projects These are the current projects I am working on
+About Me I am currently studying Computer Science. Currently my Favorite programming language is rust and have been building some projects with it.</description>
+    </item>
+    
+  </channel>
+</rss>
