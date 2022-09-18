@@ -8,8 +8,8 @@
 <meta property="og:description" content="How to set up nginx on a vps for hugo" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://italoamaya.me/posts/setting_up_nginx/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-07-25T00:00:00-05:00" />
-<meta property="article:modified_time" content="2022-07-25T00:00:00-05:00" />
+<meta property="article:published_time" content="2022-07-25T00:00:00+01:00" />
+<meta property="article:modified_time" content="2022-07-25T00:00:00+01:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Setting_up_nginx"/>
@@ -59,8 +59,21 @@
 <h3 id="install">Install</h3>
 <p>This is the web server that will handle all http/s connections.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo apt install nginx
-</span></span></code></pre></div><h3 id="config">Config</h3>
-<p>Add a config to nginx config. This config is taken from <a href="https://landchad.net/nginx.html">Land Chad</a> except from the <code>root</code> key which points to the <code>Hugo</code> site.</p>
+</span></span></code></pre></div><h3 id="configuration">Configuration</h3>
+<p>Decide on a name for the nginx configuration and create a new config for nginx. In case you are not familiar with nginx the configurations of the web server go inside <code>/etc/nginx/sites-available/</code>. The sites available directory is used to store the configurations. To enable the configurations you can symlink then to the <code>/etc/nginx/sites-enabled/</code> directory. Just replace the <code>&lt;&gt;</code> with your stuff. Remember the site-name as it will be usefull for the hugo setup</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        listen <span style="color:#ae81ff">80</span> ;
+</span></span><span style="display:flex;"><span>        listen <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:80 ;
+</span></span><span style="display:flex;"><span>        server_name &lt;domain&gt; ;
+</span></span><span style="display:flex;"><span>        root &lt;path to website eg. /var/www/mysite&gt;
+</span></span><span style="display:flex;"><span>        index index.html index.htm index.nginx-debian.html ;
+</span></span><span style="display:flex;"><span>        location / <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                try_files $uri $uri/ <span style="color:#f92672">=</span><span style="color:#ae81ff">404</span> ;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>This config is taken from <a href="https://landchad.net/nginx.html">Land Chad</a>.</p>
+<h4 id="for-hugo">For Hugo</h4>
+<p>To use this template for hugo you are just required to pull your website to a directory and add it to the <code>root</code> key. In my case it is <code>/home/&lt;username&gt;/&lt;Hugo-Directory&gt;/public</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>server <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>        listen <span style="color:#ae81ff">80</span> ;
 </span></span><span style="display:flex;"><span>        listen <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:80 ;
@@ -71,8 +84,7 @@
 </span></span><span style="display:flex;"><span>                try_files $uri $uri/ <span style="color:#f92672">=</span><span style="color:#ae81ff">404</span> ;
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>Just replace the <code>&lt;&gt;</code> with your stuff. Remember the site-name as it will be usefull for the hugo setup</p>
-<h3 id="enable-and-reload">Enable and Reload</h3>
+</span></span></code></pre></div><h3 id="enable-and-reload">Enable and Reload</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ln -s /etc/nginx/sites-available/mywebsite /etc/nginx/sites-enabled
 </span></span><span style="display:flex;"><span>systemctl reload nginx
 </span></span></code></pre></div>

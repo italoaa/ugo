@@ -6,16 +6,78 @@
     <description>Recent content on Italo Amaya</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Jul 2022 00:00:00 -0500</lastBuildDate><atom:link href="http://italoamaya.me/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Sep 2022 00:00:00 +0100</lastBuildDate><atom:link href="http://italoamaya.me/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Setting_up_nginx</title>
-      <link>http://italoamaya.me/posts/setting_up_nginx/</link>
-      <pubDate>Mon, 25 Jul 2022 00:00:00 -0500</pubDate>
+      <title>Adding_cowsay_to_ssh</title>
+      <link>http://italoamaya.me/posts/adding_cowsay_to_ssh/</link>
+      <pubDate>Sun, 18 Sep 2022 00:00:00 +0100</pubDate>
       
-      <guid>http://italoamaya.me/posts/setting_up_nginx/</guid>
-      <description>Nginx Install This is the web server that will handle all http/s connections.
-sudo apt install nginx Config Add a config to nginx config. This config is taken from Land Chad except from the root key which points to the Hugo site.
-server { listen 80 ; listen [::]:80 ; server_name &amp;lt;domain&amp;gt; ; root /home/&amp;lt;username&amp;gt;/&amp;lt;site-name&amp;gt;/public; index index.html index.htm index.nginx-debian.html ; location / { try_files $uri $uri/ =404 ; } } Just replace the &amp;lt;&amp;gt; with your stuff.</description>
+      <guid>http://italoamaya.me/posts/adding_cowsay_to_ssh/</guid>
+      <description>Install Packages sudo apt update &amp;amp;&amp;amp; sudo apt upgrade sudo apt install cowsay fortune Create the RC The following Bash commands will be run everytime you log in to ssh. The commands need to be added to ~/.ssh/rc.
+#!/bin/bash clear echo &amp;#34;&amp;#34; fortune | cowsay -cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n 1) echo &amp;#34;$(uptime)&amp;#34; echo &amp;#34;&amp;#34; Source : original post</description>
+    </item>
+    
+    <item>
+      <title>Pepper Veggie Sauce</title>
+      <link>http://italoamaya.me/recipes/pepper_veggie_sauce/</link>
+      <pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://italoamaya.me/recipes/pepper_veggie_sauce/</guid>
+      <description>Ingredients All the types of Bell peppers you can find Jalapeños Onion Garlic Olive oil Lemons Instructions In a baking tray add the whole garlic with the top chopped. add olive oil to the garlic. add the rest of the veggies chopped in chunks so they get cooked. Cook for 35-40 min. Remove the cloves from the whole garlic. move the veggies to a blender. Add lemon juice While mixing them use olive oil to emulsify the mix.</description>
+    </item>
+    
+    <item>
+      <title>Pulled Pork (Instant Pot)</title>
+      <link>http://italoamaya.me/recipes/pulled_pork/</link>
+      <pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://italoamaya.me/recipes/pulled_pork/</guid>
+      <description>Ingredients Pork Shoulder ~1kg
+Chili Powder (Maybe paprica) 4 tbsp
+Salt 1 tbsp
+Cumin 2 tsp
+Oregano
+Onion Powder 1 tsp
+Olive oil
+Garlic Powder 1 tsp
+Don&amp;rsquo;t follow the measurements they are approximates use your own and experiment with flavor
+Instructions Seasoning the pork Mix all the spices into a bowl and mix them. Dry the pork shoulder. With your hands add Olive oil to the meat so the spices stick to it.</description>
+    </item>
+    
+    <item>
+      <title>Sweet Potato Gnocchi</title>
+      <link>http://italoamaya.me/recipes/sweet_potato_gnocchi/</link>
+      <pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://italoamaya.me/recipes/sweet_potato_gnocchi/</guid>
+      <description>Ingredients Sweet Potato Flour Instructions Pierce the sweet potato with a fork. Bake them in the oven. Take the skin out. make mashed sweet potato. Add salt. Add flour and mix with your hands until its a dough. Take the dough and make it a ball Cut the ball into 4 and make for each a long snake Then cut the snake into the gnocchi source: https://www.youtube.com/shorts/udaSYLYGaaA</description>
+    </item>
+    
+    <item>
+      <title>White Sauce For Pasta</title>
+      <link>http://italoamaya.me/recipes/white_sauce_for_pasta/</link>
+      <pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://italoamaya.me/recipes/white_sauce_for_pasta/</guid>
+      <description>Ingredients Milk Flour Butter Mushrooms Instructions Sauce Melt the butter (~80g) on a pot at low heat. add 2 spoons of flour add 400ml of milk progressively to the pot Mushrooms Cut the mushrooms into slices. Cook the slices in a pan (optional, use butter). Add Salt and pepper to the mushrooms. Transfer the mushrooms to the pot with the white sauce. </description>
+    </item>
+    
+    <item>
+      <title>Causa</title>
+      <link>http://italoamaya.me/recipes/causa/</link>
+      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://italoamaya.me/recipes/causa/</guid>
+      <description>Ingredients Potato Tomato Mayo Hard boiled egg Yellow chili pepper Instructions Boil potato peal the potato Press through a potato press to make mashed potato Press the potato while hot Make Yellow chili pepper paste Mix the paste and the mashed potato to make the dough #+begin_alert-heading Warning #+end-heading This is a work in progress</description>
+    </item>
+    
+    <item>
+      <title>Peruvian Chaufa</title>
+      <link>http://italoamaya.me/recipes/peruvian_chaufa/</link>
+      <pubDate>Tue, 26 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://italoamaya.me/recipes/peruvian_chaufa/</guid>
+      <description>Ingredients Rice Sesame oil Garlic (1 clove) Red Pepper (cubes) Collar (Strips) Broccoli Chinese bean Protein (Chicken, Pork, Beef) (Sliced small) (Fry on sesame oil and soy) Soy sauce Egg Kion Chinese onion Instructions Preparation Prepare a Clove of Garlic Make a scrambled egg tortilla and do some slices Prepare broccoli branches Cut the collar into strips Cut Pepper into cubes Cut the Kion as small Rice Start with Sesame oil Add 1/2 of a clove of garlic A nail of kion Rest of ingredients Start with Sesame oil Add the protein Add Broccoli Add Collar Add Chinese bean Add the rest Mix Add the Pan with the protein and ingredients into the Rice cooker or pot.</description>
     </item>
     
     <item>
@@ -35,6 +97,28 @@ This is in /etc/ssh/sshd_config</description>
       <pubDate>Mon, 25 Jul 2022 00:00:00 -0500</pubDate>
       
       <guid>http://italoamaya.me/posts/setting_up_ssl__nginx/</guid>
+      <description>What is ssl? This step enables the visitor to come to the website on a secure connection.
+Install certbot apt install python3-certbot-nginx Run the cerbot installation It will ask for which domain to enable the https. Domain is required Go throug the installation and check for the https in your browser
+certbot --nginx Automatic certificate renewal crontab -e and add this to the end
+0 0 1 * * certbot --nginx renew </description>
+    </item>
+    
+    <item>
+      <title>Setting_up_nginx</title>
+      <link>http://italoamaya.me/posts/setting_up_nginx/</link>
+      <pubDate>Mon, 25 Jul 2022 00:00:00 +0100</pubDate>
+      
+      <guid>http://italoamaya.me/posts/setting_up_nginx/</guid>
+      <description>Nginx Install This is the web server that will handle all http/s connections.
+sudo apt install nginx Configuration Decide on a name for the nginx configuration and create a new config for nginx. In case you are not familiar with nginx the configurations of the web server go inside /etc/nginx/sites-available/. The sites available directory is used to store the configurations. To enable the configurations you can symlink then to the /etc/nginx/sites-enabled/ directory.</description>
+    </item>
+    
+    <item>
+      <title>Setting_up_ssl_nginx</title>
+      <link>http://italoamaya.me/posts/setting_up_ssl_nginx/</link>
+      <pubDate>Mon, 25 Jul 2022 00:00:00 +0100</pubDate>
+      
+      <guid>http://italoamaya.me/posts/setting_up_ssl_nginx/</guid>
       <description>What is ssl? This step enables the visitor to come to the website on a secure connection.
 Install certbot apt install python3-certbot-nginx Run the cerbot installation It will ask for which domain to enable the https. Domain is required Go throug the installation and check for the https in your browser
 certbot --nginx Automatic certificate renewal crontab -e and add this to the end
@@ -70,16 +154,6 @@ Resources In my opinion LiveOverflow playlist on binary exploitation is amazing 
     </item>
     
     <item>
-      <title>Creating this site</title>
-      <link>http://italoamaya.me/posts/creating_this_site/</link>
-      <pubDate>Tue, 14 Jun 2022 00:00:00 -0500</pubDate>
-      
-      <guid>http://italoamaya.me/posts/creating_this_site/</guid>
-      <description>Disclaimer Most of the information here is taken from the tutorial in Land Chad check them out!
-Introduction and process. This is the process I went through while making this same website. At first I tried to make a basic html and css website but my design skills where not enough. I also considered using Hugo because I use org mode almost daily and there is a package called ox-hugo, which makes transformation of the org-mode syntax into the markdown for hugo simple.</description>
-    </item>
-    
-    <item>
       <title>Setting_up_hugo</title>
       <link>http://italoamaya.me/posts/setting_up_hugo/</link>
       <pubDate>Tue, 14 Jun 2022 00:00:00 -0500</pubDate>
@@ -87,6 +161,16 @@ Introduction and process. This is the process I went through while making this s
       <guid>http://italoamaya.me/posts/setting_up_hugo/</guid>
       <description>Hugo Now that I have a server I started to play around with the site generation of hugo. It can be a bit complicated If you are using emacs and org mode like me so I will divide this explanation in to three parts: Ox-Hugo (You can skip this if you are using only md), Content Organization and Configurations.
 Set up hugo Download hugo You are going to want to install hugo in your personal machine apart from your server.</description>
+    </item>
+    
+    <item>
+      <title>Creating this site</title>
+      <link>http://italoamaya.me/posts/creating_this_site/</link>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 +0100</pubDate>
+      
+      <guid>http://italoamaya.me/posts/creating_this_site/</guid>
+      <description>Disclaimer Most of the information here is taken from the tutorial in Land Chad check them out!
+Introduction and process. This is the process I went through while making this same website. At first I tried to make a basic html and css website but my design skills where not enough. I also considered using Hugo because I use org mode almost daily and there is a package called ox-hugo, which makes transformation of the org-mode syntax into the markdown for hugo simple.</description>
     </item>
     
     <item>

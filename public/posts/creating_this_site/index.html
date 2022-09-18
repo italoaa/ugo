@@ -8,8 +8,8 @@
 <meta property="og:description" content="This is the complete process I went through to create this website incuding links and resources." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://italoamaya.me/posts/creating_this_site/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-06-14T00:00:00-05:00" />
-<meta property="article:modified_time" content="2022-06-14T00:00:00-05:00" />
+<meta property="article:published_time" content="2022-06-14T00:00:00+01:00" />
+<meta property="article:modified_time" content="2022-06-14T00:00:00+01:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Creating this site"/>
@@ -65,7 +65,8 @@
 <h3 id="getting-a-domain">Getting a domain</h3>
 <p>Now that you have a server its time to get a domain name. Again anywhere is fine just get one. Also you may want to skip this step until your server is running like you want it to avoid over paying for a long term project.</p>
 <h3 id="setting-up-the-server">Setting up the server</h3>
-<p>This step is different for everyone. Sometime in the future I will include a link to a blog post on how to do this step by step, but for now this is the overview of how I set up a new server.</p>
+<p>This step is different for everyone. Sometime in the future I will include a link to a blog post on how to do this step by step, but    for now this is the overview of how I set up a new server. <code>First of all ssh into your server</code></p>
+<h4 id="setting-up-ssh--setting-up-shh-dot-md"><a href="/posts/setting_up_shh/">Setting_up_ssh</a></h4>
 <h4 id="create-a-new-user">Create a new user</h4>
 <p>This will create a new user that has root privileges. <code>This is done in debian</code>.</p>
 <blockquote>
@@ -74,8 +75,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>adduser &lt;username&gt;              <span style="color:#75715e"># create user</span>
 </span></span><span style="display:flex;"><span>usermod -aG sudo &lt;username&gt;     <span style="color:#75715e"># Add user to sudo group</span>
 </span></span><span style="display:flex;"><span>getent group sudo               <span style="color:#75715e"># verify that the user is in sudo group</span>
-</span></span></code></pre></div><h4 id="setting-up-ssh--setting-up-shh-dot-md"><a href="/posts/setting_up_shh/">Setting_up_ssh</a></h4>
-<h4 id="setting-up-nginx--dot-setting-up-nginx-dot-md"><a href="/posts/setting_up_nginx/">Setting_up_nginx</a></h4>
+</span></span></code></pre></div><h4 id="setting-up-nginx--dot-setting-up-nginx-dot-md"><a href="/posts/setting_up_nginx/">Setting_up_nginx</a></h4>
 <h4 id="ssl-for-nginx--setting-up-ssl-nginx-dot-md"><a href="/posts/setting_up_ssl__nginx/">SSL for nginx</a></h4>
 <h3 id="hugo-set-up--dot-setting-up-hugo-dot-md"><a href="/posts/setting_up_hugo/">Hugo Set up</a></h3>
 <h2 id="resources">Resources</h2>

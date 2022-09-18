@@ -6,16 +6,15 @@
     <description>Recent content in Posts on Italo Amaya</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Jul 2022 00:00:00 -0500</lastBuildDate><atom:link href="http://italoamaya.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Sep 2022 00:00:00 +0100</lastBuildDate><atom:link href="http://italoamaya.me/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Setting_up_nginx</title>
-      <link>http://italoamaya.me/posts/setting_up_nginx/</link>
-      <pubDate>Mon, 25 Jul 2022 00:00:00 -0500</pubDate>
+      <title>Adding_cowsay_to_ssh</title>
+      <link>http://italoamaya.me/posts/adding_cowsay_to_ssh/</link>
+      <pubDate>Sun, 18 Sep 2022 00:00:00 +0100</pubDate>
       
-      <guid>http://italoamaya.me/posts/setting_up_nginx/</guid>
-      <description>Nginx Install This is the web server that will handle all http/s connections.
-sudo apt install nginx Config Add a config to nginx config. This config is taken from Land Chad except from the root key which points to the Hugo site.
-server { listen 80 ; listen [::]:80 ; server_name &amp;lt;domain&amp;gt; ; root /home/&amp;lt;username&amp;gt;/&amp;lt;site-name&amp;gt;/public; index index.html index.htm index.nginx-debian.html ; location / { try_files $uri $uri/ =404 ; } } Just replace the &amp;lt;&amp;gt; with your stuff.</description>
+      <guid>http://italoamaya.me/posts/adding_cowsay_to_ssh/</guid>
+      <description>Install Packages sudo apt update &amp;amp;&amp;amp; sudo apt upgrade sudo apt install cowsay fortune Create the RC The following Bash commands will be run everytime you log in to ssh. The commands need to be added to ~/.ssh/rc.
+#!/bin/bash clear echo &amp;#34;&amp;#34; fortune | cowsay -cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n 1) echo &amp;#34;$(uptime)&amp;#34; echo &amp;#34;&amp;#34; Source : original post</description>
     </item>
     
     <item>
@@ -42,6 +41,28 @@ certbot --nginx Automatic certificate renewal crontab -e and add this to the end
     </item>
     
     <item>
+      <title>Setting_up_nginx</title>
+      <link>http://italoamaya.me/posts/setting_up_nginx/</link>
+      <pubDate>Mon, 25 Jul 2022 00:00:00 +0100</pubDate>
+      
+      <guid>http://italoamaya.me/posts/setting_up_nginx/</guid>
+      <description>Nginx Install This is the web server that will handle all http/s connections.
+sudo apt install nginx Configuration Decide on a name for the nginx configuration and create a new config for nginx. In case you are not familiar with nginx the configurations of the web server go inside /etc/nginx/sites-available/. The sites available directory is used to store the configurations. To enable the configurations you can symlink then to the /etc/nginx/sites-enabled/ directory.</description>
+    </item>
+    
+    <item>
+      <title>Setting_up_ssl_nginx</title>
+      <link>http://italoamaya.me/posts/setting_up_ssl_nginx/</link>
+      <pubDate>Mon, 25 Jul 2022 00:00:00 +0100</pubDate>
+      
+      <guid>http://italoamaya.me/posts/setting_up_ssl_nginx/</guid>
+      <description>What is ssl? This step enables the visitor to come to the website on a secure connection.
+Install certbot apt install python3-certbot-nginx Run the cerbot installation It will ask for which domain to enable the https. Domain is required Go throug the installation and check for the https in your browser
+certbot --nginx Automatic certificate renewal crontab -e and add this to the end
+0 0 1 * * certbot --nginx renew </description>
+    </item>
+    
+    <item>
       <title>Starting with reverse engineering</title>
       <link>http://italoamaya.me/posts/starting_with_reverse_engineering/</link>
       <pubDate>Mon, 04 Jul 2022 00:00:00 -0500</pubDate>
@@ -52,16 +73,6 @@ Resources In my opinion LiveOverflow playlist on binary exploitation is amazing 
     </item>
     
     <item>
-      <title>Creating this site</title>
-      <link>http://italoamaya.me/posts/creating_this_site/</link>
-      <pubDate>Tue, 14 Jun 2022 00:00:00 -0500</pubDate>
-      
-      <guid>http://italoamaya.me/posts/creating_this_site/</guid>
-      <description>Disclaimer Most of the information here is taken from the tutorial in Land Chad check them out!
-Introduction and process. This is the process I went through while making this same website. At first I tried to make a basic html and css website but my design skills where not enough. I also considered using Hugo because I use org mode almost daily and there is a package called ox-hugo, which makes transformation of the org-mode syntax into the markdown for hugo simple.</description>
-    </item>
-    
-    <item>
       <title>Setting_up_hugo</title>
       <link>http://italoamaya.me/posts/setting_up_hugo/</link>
       <pubDate>Tue, 14 Jun 2022 00:00:00 -0500</pubDate>
@@ -69,6 +80,16 @@ Introduction and process. This is the process I went through while making this s
       <guid>http://italoamaya.me/posts/setting_up_hugo/</guid>
       <description>Hugo Now that I have a server I started to play around with the site generation of hugo. It can be a bit complicated If you are using emacs and org mode like me so I will divide this explanation in to three parts: Ox-Hugo (You can skip this if you are using only md), Content Organization and Configurations.
 Set up hugo Download hugo You are going to want to install hugo in your personal machine apart from your server.</description>
+    </item>
+    
+    <item>
+      <title>Creating this site</title>
+      <link>http://italoamaya.me/posts/creating_this_site/</link>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 +0100</pubDate>
+      
+      <guid>http://italoamaya.me/posts/creating_this_site/</guid>
+      <description>Disclaimer Most of the information here is taken from the tutorial in Land Chad check them out!
+Introduction and process. This is the process I went through while making this same website. At first I tried to make a basic html and css website but my design skills where not enough. I also considered using Hugo because I use org mode almost daily and there is a package called ox-hugo, which makes transformation of the org-mode syntax into the markdown for hugo simple.</description>
     </item>
     
   </channel>
