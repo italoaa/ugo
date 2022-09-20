@@ -6,7 +6,17 @@
     <description>Recent content on Italo Amaya</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Sep 2022 00:00:00 +0100</lastBuildDate><atom:link href="//italoamaya.me/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Sep 2022 00:00:00 +0100</lastBuildDate><atom:link href="//italoamaya.me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learning OpenGl</title>
+      <link>//italoamaya.me/posts/learning_opengl/</link>
+      <pubDate>Tue, 20 Sep 2022 00:00:00 +0100</pubDate>
+      
+      <guid>//italoamaya.me/posts/learning_opengl/</guid>
+      <description>What resources I am using At the moment I am starting with Learn_OpenGl_rust and am planing on using this resource for this entire learning process.
+Introduction As I understand the opengl library started out with the immediate mode. This mode was easy to use and made the idea of drawing graphics way easier. But it was inefficient, which resulted in opengl developing the core-profile mode which is what is being used now.</description>
+    </item>
+    
     <item>
       <title>Adding_cowsay_to_ssh</title>
       <link>//italoamaya.me/posts/adding_cowsay_to_ssh/</link>

@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//italoamaya.me/posts/adding_cowsay_to_ssh/</loc>
-    <lastmod>2022-09-18T00:00:00+01:00</lastmod>
-  </url><url>
     <loc>//italoamaya.me/</loc>
-    <lastmod>2022-09-18T00:00:00+01:00</lastmod>
+    <lastmod>2022-09-20T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>//italoamaya.me/posts/learning_opengl/</loc>
+    <lastmod>2022-09-20T00:00:00+01:00</lastmod>
   </url><url>
     <loc>//italoamaya.me/posts/</loc>
+    <lastmod>2022-09-20T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>//italoamaya.me/posts/adding_cowsay_to_ssh/</loc>
     <lastmod>2022-09-18T00:00:00+01:00</lastmod>
   </url><url>
     <loc>//italoamaya.me/recipes/pepper_veggie_sauce/</loc>
