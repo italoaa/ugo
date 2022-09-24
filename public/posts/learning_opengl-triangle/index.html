@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Learning_open Gl Triangle - Italo Amaya</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="This is the third section on learn opengl. The main topics touched are the Graphics pipeline, shaders and rendering a triangle on the screeen." />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="Learning_open Gl Triangle" />
+<meta property="og:description" content="This is the third section on learn opengl. The main topics touched are the Graphics pipeline, shaders and rendering a triangle on the screeen." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//italoamaya.me/posts/learning_opengl-triangle/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-22T00:00:00+01:00" />
+<meta property="article:modified_time" content="2022-09-22T00:00:00+01:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Learning_open Gl Triangle"/>
+<meta name="twitter:description" content="This is the third section on learn opengl. The main topics touched are the Graphics pipeline, shaders and rendering a triangle on the screeen."/>
+<script src="//italoamaya.me/js/feather.min.js"></script>
+	
+	
+        <link href="//italoamaya.me/css/fonts.b685ac6f654695232de7b82a9143a46f9e049c8e3af3a21d9737b01f4be211d1.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="//italoamaya.me/css/main.d1574b43a51792a446cd761d6f9b1c9abb39ed2c36ca6984f74aef729eb9f245.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="//italoamaya.me/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"   />
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="//italoamaya.me/">Italo Amaya</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/about">About Me</a>
+		
+		<a href="/posts">Blog</a>
+		
+		<a href="/recipes">Recipes</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Learning_open Gl Triangle</h1>
+			<div class="meta">Posted on Sep 22, 2022</div>
+		</div>
+		
+
+		<section class="body">
+			<blockquote>
+<p>Most of this information comes from learn Opengl. I am not claiming this as my explanation of how opengl works but just my own rewrite for learning purposes.</p>
+</blockquote>
+<h2 id="introduction-to-the-graphics-pipeline">Introduction to the Graphics Pipeline</h2>
+<p>The graphics pipeline has the main responsibility of <code>transforming your 3D data into 2D pixels on the screen</code>. OpenGl has everything in 3d space so the idea is that the graphics pipeline transforms that 3d space into the pixels of your screen. This pipeline has steps that all take as input the output of another. These processes that run on the GPU are called <code>Shaders</code>.</p>
+<h3 id="shaders">Shaders</h3>
+<p>The shaders are written in OpenGl Shading Language (GLSL). Using this the developer has more control over the pipeline and also saves cpu load.</p>
+<h3 id="stages-of-the-graphics-pipeline">Stages of the graphics pipeline</h3>
+<figure><img src="/ox-hugo/20220922-105922_screenshot.png"/>
+</figure>
+
+<h3 id="vertex-shader-stage">Vertex Shader Stage</h3>
+<p>This stage take the vertex data that we have to provide. A <code>Vertex</code> is a group of data holding a 3d coordinate. This data is called <code>vertex attributes</code> and can be anything. E.g color.</p>
+<blockquote>
+<p>In order for OpenGL to know what to make of your collection of coordinates and color values OpenGL requires you to hint what kind of render types you want to form with the data. Do we want the data rendered as a collection of points, a collection of triangles or perhaps just one long line? Those hints are called <code>primitives</code> and are given to OpenGL while calling any of the drawing commands. Some of these hints are <code>GL_POINTS, GL_TRIANGLES and GL_LINE_STRIP.</code></p>
+</blockquote>
+<h3 id="fragment-shader">Fragment Shader</h3>
+<p>This is the stage where the final pixel color is calculated. Normally where most of the complex Opengl effects happen. (Shadows, lights, colors of lights, etc.)</p>
+<p>There are more but theses two are the most important now as <code>we need to provide</code> a shader for both.</p>
+<h2 id="vertex-input">Vertex Input</h2>
+<p>These coordinates are not based on the pixels of your screen. These coordinates are what is called <code>Normalized Device Coordinates</code>. Due to being normalized they are in the following range \([-1,1]\). Anything outside this range its discarded. The z values are for depth if we say 0 its like it was 2d.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> vertices: [<span style="color:#66d9ef">f32</span>; <span style="color:#ae81ff">9</span>] <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#75715e">// left
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#ae81ff">0.5</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#75715e">// right
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#75715e">// top
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ];
+</span></span></code></pre></div><figure><img src="/ox-hugo/20220922-113042_screenshot.png"
+         alt="Figure 1: The origin is in the middle of the screen and the &#43;Y is pointing upwards"/><figcaption>
+            <p><span class="figure-number">Figure 1: </span>The origin is in the middle of the screen and the +Y is pointing upwards</p>
+        </figcaption>
+</figure>
+
+<h3 id="vertex-buffer-objects--vbo">Vertex Buffer Objects (VBO)</h3>
+<p>These are the memory we use to send the vertex data as input to the GPU. This memory is then loaded to the GPU giving it massive performance. Now on these memory areas we load data such as vertex data.</p>
+<h3 id="vertex-array-object--vao">Vertex Array Object (VAO)</h3>
+<p>There are <code>Buffer Objects</code> and <code>Buffer Types</code>. The vertex buffer object has the buffer type of <code>Vertex Array Object</code>. We need to bind out VBO to the VAO type target</p>
+<h3 id="bringing-everything-together">Bringing everything together</h3>
+<p>Now lets generate and bind our buffers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> (<span style="color:#66d9ef">mut</span> VBO, <span style="color:#66d9ef">mut</span> VAO) <span style="color:#f92672">=</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    gl::GenVertexArrays(<span style="color:#ae81ff">1</span>, <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> VAO);
+</span></span><span style="display:flex;"><span>    gl::GenBuffers(<span style="color:#ae81ff">1</span>, <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> VBO);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    gl::BindVertexArray(VAO);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    gl::BindBuffer(gl::ARRAY_BUFFER, VBO);
+</span></span></code></pre></div><p>After we setup our buffers we use the <code>BufferData</code> method to fill this buffer with the vertex information. The first argument is the <code>buffer type</code>. The second argument is the <code>size of the data</code>. To get this size we get the length of our array which is 9 and we multiply that by the <code>size_of::&lt;Glfloat&gt;</code>. This gives us the size of the array, with this size we cast it to a <code>GLsizeiptr</code>. Finaly the fourth argument is how to use this data:</p>
+<ol>
+<li><code>gl::STREAM_DRAW</code>: the data is set only once and used by the GPU at most a few times.</li>
+<li><code>gl::STATIC_DRAW</code>: the data is set only once and used many times.</li>
+<li><code>gl::DYNAMIC_DRAW</code>: the data is changed a lot and used many times.</li>
+</ol>
+<p>we use static draw</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>    gl::BufferData(
+</span></span><span style="display:flex;"><span>        gl::ARRAY_BUFFER,
+</span></span><span style="display:flex;"><span>        (vertices.len() <span style="color:#f92672">*</span> mem::size_of::<span style="color:#f92672">&lt;</span>GLfloat<span style="color:#f92672">&gt;</span>()) <span style="color:#66d9ef">as</span> GLsizeiptr,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&amp;</span>vertices[<span style="color:#ae81ff">0</span>] <span style="color:#66d9ef">as</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">f32</span> <span style="color:#66d9ef">as</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">const</span> c_void,
+</span></span><span style="display:flex;"><span>        gl::STATIC_DRAW,
+</span></span><span style="display:flex;"><span>    );
+</span></span></code></pre></div><p>Now that the data is available its time to talk shaders.</p>
+<h2 id="doing-shaders">Doing shaders</h2>
+<p>So because we are required to provide at least a <code>vertex sharder</code> and a fragment shader we are going to do those now. Normally doing shaders requires us having to compile shaders in opengl shader language or (GLSL). But we are going to do them in rust as a string.</p>
+<h3 id="vertex-shader">Vertex shader</h3>
+<p>As you can see we are programming the GLSL code and placing it in a const.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> vertexShaderSource: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">r#&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        #version 330 core
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        layout (location = 0) in vec3 aPos;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        void main() {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;#</span>;
+</span></span></code></pre></div><p>Now that we have our GLSL code we need to create a <code>shader object</code>. Which I think the idea is close to how we created a <code>buffer object</code> that is represented with an id.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>    <span style="color:#75715e">// vertex shader
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> vertexShader <span style="color:#f92672">=</span> gl::CreateShader(gl::VERTEX_SHADER);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> c_str_vert <span style="color:#f92672">=</span> CString::new(vertexShaderSource.as_bytes()).unwrap();
+</span></span><span style="display:flex;"><span>    gl::ShaderSource(vertexShader, <span style="color:#ae81ff">1</span>, <span style="color:#f92672">&amp;</span>c_str_vert.as_ptr(), ptr::null());
+</span></span><span style="display:flex;"><span>    gl::CompileShader(vertexShader);
+</span></span></code></pre></div><p>First we use <code>CreateShader</code> to make a shader with the <code>VERTEX_SHADER</code> constant that let the compiler know that the shader we are trying to compile is a vertex shader. Then we use the struct <code>CString</code> which turns rust strings into <code>c-like</code> strings that have no null byte in the middle and are null byte terminated. We initialize the shader Source and we compile it. The arguments to <code>ShaderSource</code> are first the id of the shader object. Then the second argument is the number of strings that are going to be passed in. Third is the actual shader source and finally the last can be just null.
+Now that we have compiled the code we check for errors</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>  <span style="color:#75715e">// check for shader compile errors
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> success <span style="color:#f92672">=</span> gl::FALSE <span style="color:#66d9ef">as</span> GLint;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> infoLog <span style="color:#f92672">=</span> Vec::with_capacity(<span style="color:#ae81ff">512</span>);
+</span></span><span style="display:flex;"><span>        infoLog.set_len(<span style="color:#ae81ff">512</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// subtract 1 to skip the trailing null character
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        gl::GetShaderiv(vertexShader, gl::COMPILE_STATUS, <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> success);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> success <span style="color:#f92672">!=</span> gl::TRUE <span style="color:#66d9ef">as</span> GLint {
+</span></span><span style="display:flex;"><span>            gl::GetShaderInfoLog(vertexShader, <span style="color:#ae81ff">512</span>, ptr::null_mut(), infoLog.as_mut_ptr() <span style="color:#66d9ef">as</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">mut</span> GLchar);
+</span></span><span style="display:flex;"><span>            println!(<span style="color:#e6db74">&#34;ERROR::SHADER::VERTEX::COMPILATION_FAILED\n{}&#34;</span>, <span style="color:#66d9ef">str</span>::from_utf8(<span style="color:#f92672">&amp;</span>infoLog).unwrap());
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p>For checking for compile errors we have to first use <code>GetShaderiv</code> to request the compile status. Then do a if <code>success</code> does not equal to the <code>gl::TRUE</code> then we get the logs with =GetShaderInfoLog passing the id object, the size of our buffer, a null and a pointer to our buffer. Then we just output it to the screen.</p>
+<h3 id="fragment-shader">Fragment Shader</h3>
+<p>For the fragment shader is almost the same process.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> fragmentShaderSource: <span style="color:#66d9ef">&amp;</span><span style="color:#66d9ef">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">r#&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        #version 330 core
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        out vec4 FragColor;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        void main() {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;#</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>    <span style="color:#75715e">// fragment shader
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> fragmentShader <span style="color:#f92672">=</span> gl::CreateShader(gl::FRAGMENT_SHADER);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> c_str_frag <span style="color:#f92672">=</span> CString::new(fragmentShaderSource.as_bytes()).unwrap();
+</span></span><span style="display:flex;"><span>    gl::ShaderSource(fragmentShader, <span style="color:#ae81ff">1</span>, <span style="color:#f92672">&amp;</span>c_str_frag.as_ptr(), ptr::null());
+</span></span><span style="display:flex;"><span>    gl::CompileShader(fragmentShader);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// check for shader compile errors
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    gl::GetShaderiv(fragmentShader, gl::COMPILE_STATUS, <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> success);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> success <span style="color:#f92672">!=</span> gl::TRUE <span style="color:#66d9ef">as</span> GLint {
+</span></span><span style="display:flex;"><span>        gl::GetShaderInfoLog(
+</span></span><span style="display:flex;"><span>            fragmentShader,
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">512</span>,
+</span></span><span style="display:flex;"><span>            ptr::null_mut(),
+</span></span><span style="display:flex;"><span>            infoLog.as_mut_ptr() <span style="color:#66d9ef">as</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">mut</span> GLchar,
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>        println!(
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n{}&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">str</span>::from_utf8(<span style="color:#f92672">&amp;</span>infoLog).unwrap()
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><h2 id="linking-our-shaders">Linking our Shaders</h2>
+<p>Now we need to link all our shaders into a <code>Shader Program</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>        <span style="color:#75715e">// link shaders
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">let</span> shaderProgram <span style="color:#f92672">=</span> gl::CreateProgram();
+</span></span><span style="display:flex;"><span>        gl::AttachShader(shaderProgram, vertexShader);
+</span></span><span style="display:flex;"><span>        gl::AttachShader(shaderProgram, fragmentShader);
+</span></span><span style="display:flex;"><span>        gl::LinkProgram(shaderProgram);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// check for linking errors
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        gl::GetProgramiv(shaderProgram, gl::LINK_STATUS, <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> success);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> success <span style="color:#f92672">!=</span> gl::TRUE <span style="color:#66d9ef">as</span> GLint {
+</span></span><span style="display:flex;"><span>            gl::GetProgramInfoLog(
+</span></span><span style="display:flex;"><span>                shaderProgram,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">512</span>,
+</span></span><span style="display:flex;"><span>                ptr::null_mut(),
+</span></span><span style="display:flex;"><span>                infoLog.as_mut_ptr() <span style="color:#66d9ef">as</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">mut</span> GLchar,
+</span></span><span style="display:flex;"><span>            );
+</span></span><span style="display:flex;"><span>            println!(
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ERROR::SHADER::PROGRAM::COMPILATION_FAILED\n{}&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">str</span>::from_utf8(<span style="color:#f92672">&amp;</span>infoLog).unwrap()
+</span></span><span style="display:flex;"><span>            );
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        gl::DeleteShader(vertexShader);
+</span></span><span style="display:flex;"><span>        gl::DeleteShader(fragmentShader);
+</span></span></code></pre></div><p>In here we are doing much of the same. First we create the shader program and we attach both out shaders. Then we link them and finally we check for errors. In the end the shaders are deleted.</p>
+<h2 id="render-loop">Render loop</h2>
+<p>First we use the shader program we linked before. Then we bind the vertex Array object, and finally we draw the arrays by passing the opengl primitive <code>TRIANGLES</code> and then the index to start in and in the end the amount of vertices we want to draw.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">true</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    gl::UseProgram(shaderProgram);
+</span></span><span style="display:flex;"><span>    gl::BindVertexArray(VAO); <span style="color:#75715e">// seeing as we only have a single VAO there&#39;s no need to bind it every time, but we&#39;ll do so to keep things a bit more organized
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    gl::DrawArrays(gl::TRIANGLES, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// glBindVertexArray(0); // no need to unbind it every time
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">..</span>.
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><figure><img src="/ox-hugo/20220924-154241_screenshot.png"/>
+</figure>
+
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/athul/archie" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2022  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>
